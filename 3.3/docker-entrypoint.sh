@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+/bin/bash /bin/generate-gemFilelocal.sh
 
 case "$1" in
 	rails|rake|passenger)
