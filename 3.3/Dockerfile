@@ -53,10 +53,6 @@ RUN curl -fSL "http://www.redmine.org/releases/redmine-${REDMINE_VERSION}.tar.gz
 	&& mkdir -p tmp/pdf public/plugin_assets \
 	&& chown -R redmine:redmine ./
 
-#load Gemfile.local
-ADD ./generate-gemfileLocal /bin/
-RUN chmod +x /bin/generate-gemfileLocal.sh
-
 
 RUN buildDeps='\
 		gcc \
@@ -82,6 +78,11 @@ RUN buildDeps='\
 
 
 VOLUME /usr/src/redmine/files
+
+#load Gemfile.local
+ADD ./generate-gemfileLocal /bin/
+RUN chmod +x /bin/generate-gemfileLocal.sh
+
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
