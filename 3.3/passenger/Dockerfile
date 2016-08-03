@@ -13,5 +13,6 @@ RUN set -x \
 	&& passenger-config install-standalone-runtime
 	
 VOLUME /usr/src/redmine/plugins
-
+COPY otro-entrypoint.sh
+ENTRYPOINT["/otro-entrypoint.sh"]
 CMD ["passenger", "start"]
