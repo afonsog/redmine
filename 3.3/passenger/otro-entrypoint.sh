@@ -10,7 +10,12 @@ for i in ${urls[@]}; do
     comando="git clone"
     IFS=$' '
     for j in ${i[@]}; do
-        comando+=" $j"
+        if [ -d $j ]; then #Si la carpeta existe, no se clonara el respositorio
+            comando=""       
+            break
+        else
+            comando+=" $j"
+        fi
     done
     $comando
     IFS=$'\n'
