@@ -2,7 +2,20 @@ redmine-passenger:
     container_name: redmine-passenger
     build: .
     environment:
+        REDMINE_DB_MYSQL: redmine-mysql
+        MYSQL_ENV_MYSQL_PASSWORD: redmine
+        REDMINE_DB_ENCODING: utf8
         PLUGINS: |
             git://github.com/alexandermeindl/redmine_tweaks.git plugins/redmine_tweaks
     ports:
         - "3000:3000"
+    links:
+        - redmine-mysql
+redmine-mysql:
+    container_name: redmine-mysql
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: redmine
+        MYSQL_DATABASE: redmine
+    expose:
+        - "3306"
