@@ -1,0 +1,8 @@
+redmine-passenger:
+    container_name: redmine-passenger
+    build: .
+    environment:
+        PLUGINS: |
+            git://github.com/alexandermeindl/redmine_tweaks.git plugins/redmine_tweaks
+    ports:
+        - "3000:3000"

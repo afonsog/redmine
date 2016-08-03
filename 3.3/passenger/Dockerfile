@@ -13,7 +13,7 @@ RUN set -x \
 	&& passenger-config install-standalone-runtime
 	
 VOLUME /usr/src/redmine/plugins
-RUN /bin/bash /docker-entrypoint.sh
+COPY supervisor.sh /
 COPY otro-entrypoint.sh /
-ENTRYPOINT ["/otro-entrypoint.sh"]
-#CMD ["passenger", "start"]
+ENTRYPOINT ["/supervisor.sh"]
+CMD ["passenger", "start"]
