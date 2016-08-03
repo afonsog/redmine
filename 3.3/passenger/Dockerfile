@@ -11,5 +11,7 @@ RUN buildDeps=' \
 RUN set -x \
 	&& passenger-config install-agent \
 	&& passenger-config install-standalone-runtime
+	
+VOLUME /usr/src/redmine/plugins
 
 CMD ["passenger", "start"]
