@@ -8,6 +8,7 @@ redmine-passenger:
         REDMINE_DB_MYSQL: redmine-mysql
         MYSQL_ENV_MYSQL_PASSWORD: redmine
         REDMINE_DB_ENCODING: utf8
+        #cargar plugins de la siguiente forma: repositorio-git.git plugins/nombre_plugin
         PLUGINS: |
             git://github.com/alexandermeindl/redmine_tweaks.git plugins/redmine_tweaks
             https://github.com/twinslash/redmine_omniauth_google.git plugins/redmine_omniauth_google
