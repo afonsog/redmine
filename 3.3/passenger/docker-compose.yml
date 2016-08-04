@@ -2,8 +2,8 @@ redmine-passenger:
     container_name: redmine-passenger
     build: .
     volumes:
-        - ./files:/usr/src/redmine/files
-        - ./plugins:/usr/src/redmine/plugins
+        - /opt/applications/redmine/files:/usr/src/redmine/files
+        - /opt/applications/redmine/plugins:/usr/src/redmine/plugins
     environment:
         REDMINE_DB_MYSQL: redmine-mysql
         MYSQL_ENV_MYSQL_PASSWORD: redmine
@@ -24,7 +24,7 @@ redmine-mysql:
         MYSQL_ROOT_PASSWORD: redmine
         MYSQL_DATABASE: redmine
     volumes:
-        - .data:/var/lib/mysql
-        - ./redmine_mw_dump.sql:/docker-entrypoint-initdb.d/redmine.sql
+        - /opt/applications/redmine/.data:/var/lib/mysql
+        - /opt/applications/redmine/redmine_mw_dump.sql:/docker-entrypoint-initdb.d/redmine.sql
     expose:
         - "3306"
